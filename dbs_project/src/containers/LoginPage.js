@@ -1,28 +1,39 @@
 import React, {useState} from 'react';
 import NavBar from "./NavBar";
 import axios from "axios";
+import {useDispatch} from "react-redux";
+import {useNavigate} from "react-router-dom";
+import {login} from "../_features/userSlice";
 
 function LoginPage() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const handleLogin = async (e) => {
         e.preventDefault();
 
-        const login = new FormData();
-        login.append("email", email);
+        const loginForm = new FormData();
+        loginForm.append("email", email);
         try {
             const response=await axios(
                 {
                     method: "POST",
                     url: "dbs_project/login.php",
-                    data: login,
+                    data: loginForm,
                     headers: {"Content-Type": "multipart/form-data",},
                 }
             );
+            // console.log(response.data);
             const user_password=response.data.password;
             if(password==user_password){
                 alert("로그인 성공");
+                dispatch(login({  //로그인
+                    uid: response.data.id,
+                    uname: response.data.name
+                }))
+                navigate('/');
             }else{
                 alert("비밀번호를 확인해주세요");
             }

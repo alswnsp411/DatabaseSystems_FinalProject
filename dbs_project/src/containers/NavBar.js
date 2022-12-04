@@ -1,8 +1,26 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './NavBar.css';
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
+import {logout, selectUser} from "../_features/userSlice";
 
 function NavBar() {
+    const user = useSelector(selectUser);
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+
+    const handleLogout = () => {
+        if (user) {  //로그인이 되어있는 상태: 로그아웃
+            navigate('/');
+            dispatch(logout());
+        }
+    }
+    const handleLogIn = () => {
+        if (!user) {
+            alert('로그인이 필요합니다.');
+        }
+    }
+
     return (
         <div className="nav_bar">
             <Link to='/'>
@@ -13,8 +31,8 @@ function NavBar() {
                 <button>검색</button>
             </div>
             <div className="menu">
-                <Link to='/login'>
-                    <span className="menu_link">로그인</span>
+                <Link to={!user && '/login'}>
+                    <span className="menu_link" onClick={handleLogout}>{user ? '로그아웃' : '로그인하기'}</span>
                 </Link>
                 <Link to='/register'>
                     <span className="menu_link">회원가입</span>
@@ -22,11 +40,11 @@ function NavBar() {
                 <Link to='/manager'>
                     <span className="menu_link">관리자 로그인</span>
                 </Link>
-                <Link to='/my_cart'>
-                    <span className="menu_link">장바구니</span>
+                <Link to={user && '/my_cart'}>
+                    <span className="menu_link" onClick={handleLogIn}>장바구니</span>
                 </Link>
-                <Link to='/order_list'>
-                    <span className="menu_link">주문목록</span>
+                <Link to={user && '/order_list'}>
+                    <span className="menu_link" onClick={handleLogIn}>주문목록</span>
                 </Link>
             </div>
         </div>
