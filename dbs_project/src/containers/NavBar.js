@@ -38,7 +38,7 @@ function NavBar() {
                     <span className="menu_link">회원가입</span>
                 </Link>
                 <Link to='/manager'>
-                    <span className="menu_link">관리자 로그인</span>
+                    <span className="menu_link">관리자계정</span>
                 </Link>
                 <Link to={user && '/my_cart'}>
                     <span className="menu_link" onClick={handleLogIn}>장바구니</span>
