@@ -106,7 +106,7 @@ VALUES ('주방용품');
 INSERT INTO CATEGORY
 VALUES ('홈인테리어');
 
-#CUSTOMER 추가
+# CUSTOMER 추가
 INSERT INTO CUSTOMER(email, password, name, phone_number, payment, address)
 VALUES ('wjdgus@naver.com', '1234', '정현', '0101234', '국민은행', '제주도');
 INSERT INTO CUSTOMER(email, password, name, phone_number, payment, address)
@@ -119,6 +119,14 @@ INSERT INTO CUSTOMER(email, password, name, phone_number, payment, address)
 VALUES ('tmdgus@naver.com', '1234', '승현', '0102328', '국민은행', '경기도');
 INSERT INTO CUSTOMER(email, password, name, phone_number, payment, address)
 VALUES ('tkddn@naver.com', '1234', '상우', '0104958', '하나은행', '수원');
+
+# SHOPPING_BASKET 추가
+INSERT INTO SHOPPING_BASKET(cust_id) VALUES(1);
+INSERT INTO SHOPPING_BASKET(cust_id) VALUES(2);
+INSERT INTO SHOPPING_BASKET(cust_id) VALUES(3);
+INSERT INTO SHOPPING_BASKET(cust_id) VALUES(4);
+INSERT INTO SHOPPING_BASKET(cust_id) VALUES(5);
+INSERT INTO SHOPPING_BASKET(cust_id) VALUES(6);
 
 # PRODUCT 추가
 INSERT INTO PRODUCT(name, picture, price, count, information, category_name)
