@@ -1,28 +1,32 @@
-import React from 'react';
+import React, {useState} from 'react';
 import axios from "axios";
 import {useSelector} from "react-redux";
 import {selectUser} from "../_features/userSlice";
+import {useNavigate} from "react-router-dom";
 
 function OrderProduct(props) {
-    const user= useSelector(selectUser);
+    const user = useSelector(selectUser);
+    const navigate= useNavigate();
 
     const PutProduct = async (e) => {
         e.preventDefault();
         console.log(user);
 
         const putForm = new FormData();
-        putForm.append("uid",user.uid);
-        putForm.append("pid",props.id);
-        try{
+        putForm.append("uid", user.uid);
+        putForm.append("pid", props.id);
+        try {
             await axios(
                 {
-                    method : "POST",
-                    url : "http://localhost:3000/dbs_project/addShoppingBasket.php",
-                    data : putForm,
-                    headers : {"Content-Type" : "multipart/form-data",},
+                    method: "POST",
+                    url: "http://localhost:3000/dbs_project/addShoppingBasket.php",
+                    data: putForm,
+                    headers: {"Content-Type": "multipart/form-data",},
                 });
             alert(`${props.name}을 장바구니에 담았습니다.`);
-        }catch(error){
+            navigate('/');
+
+        } catch (error) {
             console.log(error);
         }
     }

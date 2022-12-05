@@ -25,7 +25,6 @@ function LoginPage() {
                     headers: {"Content-Type": "multipart/form-data",},
                 }
             );
-            // console.log(response.data);
             const user_password=response.data.password;
             if(password==user_password){
                 alert("로그인 성공");

@@ -27,7 +27,6 @@ function CategoryProductPage() {
                 console.log(error);
             }
         }
-
         fetchData();
     }, []);
 

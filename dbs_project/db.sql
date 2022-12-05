@@ -45,7 +45,7 @@ CREATE TABLE BASKET_PRODUCT_RELATION
 (
     cust_id    INT NOT NULL,
     product_id INT NOT NULL,
-    count      INT DEFAULT 1,
+    my_count      INT DEFAULT 1,
     PRIMARY KEY (cust_id, product_id),
     FOREIGN KEY (cust_id) REFERENCES CUSTOMER (id) ON DELETE CASCADE,
     FOREIGN KEY (product_id) REFERENCES PRODUCT (id) ON DELETE CASCADE
