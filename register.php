@@ -7,8 +7,9 @@ $sql = "INSERT INTO CUSTOMER(email, password, name, phone_number, payment, addre
 if(!mysqli_query($conn, $sql)){
     die('Error: ' .mysqli_error($conn));
 }
-$sql="INSERT INTO SHOPPING_BASKET(cust_id, total_price) VALUES((SELECT id FROM CUSTOMER cs WHERE cs.email='$_POST[email]'), 0)";
-if(!mysqli_query($conn, $sql)){
+
+$sql2="INSERT INTO SHOPPING_BASKET(cust_id, total_price) VALUES((SELECT id FROM CUSTOMER cs WHERE cs.email='$_POST[email]'), 0)";
+if(!mysqli_query($conn, $sql2)){
     die('Error: ' .mysqli_error($conn));
 }
 
