@@ -1,12 +1,11 @@
 import React from 'react';
-import './Table.css';
 import axios from "axios";
 
-function Product(props) {
-    const UpdateProduct = () => {
+function OrderProduct(props) {
+    const PutProduct = () => {
 
-    }
-    const DeleteProduct = async (e) => {
+}
+    const OrderProduct = async (e) => {
         e.preventDefault();
 
         const deleteForm = new FormData();
@@ -42,13 +41,11 @@ function Product(props) {
             <span className="table">|</span>
             <span className="table" style={{width: "25%"}}>{props.information}</span>
             <span className="table">|</span>
-            <span className="table" style={{width: "5%"}}>{props.categoryName}</span>
-            <span className="table">|</span>
-            <button onClick={UpdateProduct}>수정</button>
-            <button onClick={DeleteProduct}>삭제</button>
+            <button onClick={PutProduct}>장바구니에 담기</button>
+            <button onClick={OrderProduct}>주문하기</button>
             <hr />
         </div>
     );
 }
 
-export default Product;
+export default OrderProduct;

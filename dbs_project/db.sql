@@ -129,3 +129,7 @@ INSERT INTO PRODUCT(name, picture, price, count, information, category_name)
 VALUES ('반려견 털 빗', '반려견 털 빗 사진', 10000, 40, '털이 잘 빗어지는 빗입니다. 아프지 않아요.', '반려동물용품');
 INSERT INTO PRODUCT(name, picture, price, count, information, category_name)
 VALUES ('손에 무리가 가지 않는 마우스', '마우스 사진', 3000, 10, '손에 무리가 가지 않는 마우스입니다.', '완구_취미');
+
+# CATEGORY 별 PRODUCT 검색
+SELECT * FROM PRODUCT WHERE category_name='완구_취미';
+SELECT * FROM PRODUCT WHERE category_name='식품';
