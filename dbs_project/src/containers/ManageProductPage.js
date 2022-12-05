@@ -1,7 +1,6 @@
-import React, {useEffect, useMemo, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import NavBar from "./NavBar";
 import axios from "axios";
-import {useTable} from "react-table";
 import Product from "../_components/Product";
 
 function ManageProductPage() {
