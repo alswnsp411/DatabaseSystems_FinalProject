@@ -1,6 +1,6 @@
 import React from 'react';
 
-function OrderProduct(props) {
+function SearchResult(props) {
     const PutProduct = () => {
 
     }
@@ -8,7 +8,7 @@ function OrderProduct(props) {
     }
 
     return (
-        <div className="product">
+        <div className="SearchResult">
             <span className="table">|</span>
             <span className="table" style={{width: "1%"}}>{props.id}</span>
             <span className="table">|</span>
@@ -22,6 +22,8 @@ function OrderProduct(props) {
             <span className="table">|</span>
             <span className="table" style={{width: "25%"}}>{props.information}</span>
             <span className="table">|</span>
+            <span className="table" style={{width: "5%"}}>{props.categoryName}</span>
+            <span className="table">|</span>
             <button onClick={PutProduct}>장바구니에 담기</button>
             <button onClick={OrderProduct}>주문하기</button>
             <hr/>
@@ -29,4 +31,4 @@ function OrderProduct(props) {
     );
 }
 
-export default OrderProduct;
+export default SearchResult;
