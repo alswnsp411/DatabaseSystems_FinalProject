@@ -8,6 +8,7 @@ import OrderProduct from "../_components/OrderProduct";
 function ShoppingBasketPage() {
     const user= useSelector(selectUser);
     const [products, setProducts] = useState([]);
+    const [totalPrice, setTotalPrice]= useState(0);
 
     useEffect(() => {
         async function fetchData() {
@@ -22,7 +23,16 @@ function ShoppingBasketPage() {
                         headers: {"Content-Type": "multipart/form-data",},
                     });
                 setProducts(response.data);
-                console.log(response.data);
+
+                const totalPrice = await axios(
+                    {
+                        method: "POST",
+                        url: "http://localhost:3000/dbs_project/totalPrice.php",
+                        data: myShoppingBasketForm,
+                        headers: {"Content-Type": "multipart/form-data",},
+                    });
+                setTotalPrice(totalPrice.data[0].total_price);
+                console.log(totalPrice.data[0].total_price);
             } catch (error) {
                 console.log(error);
             }
@@ -59,6 +69,9 @@ function ShoppingBasketPage() {
                                   price={element.price} count={element.my_count} information={element.information}
                     />
                 ))}
+            </div>
+            <div>
+                총 금액 :  {totalPrice}원
             </div>
 
         </div>
