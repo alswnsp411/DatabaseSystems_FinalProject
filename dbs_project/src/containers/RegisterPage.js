@@ -35,6 +35,27 @@ function RegisterPage() {
         }catch(error){
             console.log(error);
         }
+
+        const basketForm = new FormData();
+        basketForm.append("email",email);
+        reigster.append("password",password);
+        reigster.append("name",name);
+        reigster.append("phoneNumber",phoneNumber);
+        reigster.append("payment",payment);
+        reigster.append("address",address);
+        try{
+            await axios(
+                {
+                    method : "POST",
+                    url : "dbs_project/register.php",
+                    data : reigster,
+                    headers : {"Content-Type" : "multipart/form-data",},
+                });
+            navigate('/login');
+            alert(`${name}님 환영합니다 ~`);
+        }catch(error){
+            console.log(error);
+        }
     }
 
     return (

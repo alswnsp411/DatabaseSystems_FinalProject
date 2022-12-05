@@ -49,7 +49,7 @@ function ManageProductPage() {
             <h4>상품 추가</h4>
             <form>
                 상품 이름 :
-                <input type="text" placeholder="이메일"
+                <input type="text" placeholder="상품 이름"
                        value={name} onChange={(e) => setName(e.target.value)}/>
                 사진 :
                 <input type="text" placeholder="사진" value={picture}
